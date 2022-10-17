@@ -52,8 +52,9 @@ dataset_urls = {
   "silver_vaccinations":f"{share_file_path}#rearc_databricks_hls_share.hls_covid19_usa.vaccinations_county_utd",
 }
 
-# Create schema
-spark.sql("CREATE SCHEMA IF NOT EXISTS sdoh")
+# Reinitiate schema
+spark.sql("DROP SCHEMA IF EXISTS sdoh CASCADE")
+spark.sql("CREATE SCHEMA sdoh")
 
 # Add tables
 for ds, url in dataset_urls.items():
