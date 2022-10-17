@@ -4,7 +4,6 @@
 [![CLOUD](https://img.shields.io/badge/CLOUD-ALL-blue?logo=googlecloud&style=for-the-badge)](https://cloud.google.com/databricks)
 [![POC](https://img.shields.io/badge/POC-10_days-green?style=for-the-badge)](https://databricks.com/try-databricks)
 
-%md
 # Social Determinants of Health (SDH)
 Many aspects of a person's life style and status can impact health outcomes. Multiple studies suggest that Social Determinents of Health (SDH) account for between 30-55% of health outcomes. 
 [The WHO defines SDH as]((https://www.who.int/health-topics/social-determinants-of-health#tab=tab_1):
@@ -20,7 +19,6 @@ Correlation between SDH and health outcomes is very clear: the lower the socioec
 
 There are many public sources of SDH data with different levels of granularity (country level, state/province, county, or zipcode/postal code level) that can be used in analysis of the impact of SDH on health outcomes. One of the main challenegs for data analysis is finding the right data source and data cleaning. 
 
-%md
 ## Access SDH data via Delta Share
 In this solution accelerator, we use pre-processed and cleansed tables that have been made available by [Rearc](rearc.io) via [delta sharing protocol](https://www.databricks.com/blog/2021/05/26/introducing-delta-sharing-an-open-protocol-for-secure-data-sharing.html). We explore income, healthcare, education and other aspects affect counties vaccinations rates for COVID-19. 
 
@@ -30,7 +28,6 @@ Using these data, we train a machine learning model to predict vaccination rates
 ![](https://databricks.com/wp-content/uploads/2022/03/delta-lake-medallion-architecture-2.jpeg)
 
 
-%md
 ## License
 Copyright / License info of the notebook. Copyright [2021] the Notebook Authors.  The source in this notebook is provided subject to the  the [Databricks License](https://databricks.com/db-license-source).  All included or referenced third party libraries are subject to the licenses set forth below.
 
