@@ -159,7 +159,7 @@ spark.read.csv('wasb://data@sdohworkshop.blob.core.windows.net/sdoh/Population_D
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC Now we create a pandas data frame which will used by the ML framework
+# MAGIC Now we create a pandas data frame which will be used by the ML framework
 
 # COMMAND ----------
 
