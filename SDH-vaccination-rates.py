@@ -24,32 +24,25 @@
 
 # COMMAND ----------
 
+# MAGIC %sh pip install delta-sharing
+
+# COMMAND ----------
+
 # MAGIC %md
-# MAGIC 
-# MAGIC ```%sh
-# MAGIC mkdir -p /dbfs/FileSystem/tmp/delta_share/
-# MAGIC cp config/rearc_hls_data.share /dbfs/FileSystem/tmp/delta_share/```
+# MAGIC To get access to the data, we first need to specify the location where the [deltashare credentials file](https://docs.databricks.com/data-sharing/delta-sharing/recipient.html#download-the-credential-file) is stored.
 
 # COMMAND ----------
 
-# MAGIC %sh pip install delta-sharing s3fs
-
-# COMMAND ----------
-
+# DBTITLE 1,retrieve share credentials file 
 import delta_sharing
-share_file_path = "s3://hls-eng-data-public/delta_share/rearc_hls_data.share"
+dbutils.fs.cp('s3://hls-eng-data-public/delta_share/rearc_hls_data.share','/tmp/')
+share_file_path = "/dbfs/tmp/rearc_hls_data.share"
 client = delta_sharing.SharingClient(share_file_path)
 shared_tables = client.list_all_tables()
 
 # COMMAND ----------
 
-[t for t in shared_tables if t.schema =='hls_covid19_usa']
-
-# COMMAND ----------
-
 # DBTITLE 1,setup deltashare
-share_file_path = "/FileSystem/tmp/delta_share/rearc_hls_data.share"
-
 dataset_urls = {
   "bronze_income":f"{share_file_path}#rearc_databricks_hls_share.hls_sdoh.bronze_income",
   "silver_poverty":f"{share_file_path}#rearc_databricks_hls_share.hls_sdoh.poverty_county",
@@ -165,27 +158,6 @@ spark.read.csv('wasb://data@sdohworkshop.blob.core.windows.net/sdoh/Population_D
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC select Recip_State,
-# MAGIC   avg(Series_Complete_12PlusPop_Pct) as Series_Complete_12PlusPop_Pct,
-# MAGIC   avg(population_density),
-# MAGIC   sum(County_Population),
-# MAGIC   avg(Minoirity_Population_Pct),
-# MAGIC   percentile(income,0.5),
-# MAGIC   avg(All_Ages_in_Poverty_Percent),
-# MAGIC   avg(25PlusHSPct),
-# MAGIC   avg(25PlusAssociatePct),
-# MAGIC   avg(SmokingPct),
-# MAGIC   avg(ObesityPct),
-# MAGIC   avg(HeartDiseasePct),
-# MAGIC   avg(CancerPct),
-# MAGIC   avg(NoHealthInsPct),
-# MAGIC   avg(AsthmaPct)
-# MAGIC from vaccine_data_pct
-# MAGIC group by Recip_State
-
-# COMMAND ----------
-
 # MAGIC %md
 # MAGIC Now we create a pandas data frame which will used by the ML framework
 
@@ -242,6 +214,11 @@ displayHTML(f"mae =<b>{mae}</b> and rsme: <b>{rmse}</b>")
 # MAGIC ## Model Explainability and Feature Importance
 # MAGIC Now, to explore the impact of SDOH factors affecting vacination rates, we use SHAP values. 
 # MAGIC For an introduction to SHAP see [this blog](https://towardsdatascience.com/shap-explained-the-way-i-wish-someone-explained-it-to-me-ab81cc69ef30#:~:text=In%20a%20nutshell%2C%20SHAP%20values,answer%20the%20%E2%80%9Chow%20much%E2%80%9D').
+
+# COMMAND ----------
+
+explainer = shap.TreeExplainer(xgb_model)
+shap_values = explainer.shap_values(X, y)
 
 # COMMAND ----------
 
