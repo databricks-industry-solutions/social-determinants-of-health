@@ -36,8 +36,8 @@
 # DBTITLE 1,retrieve share credentials file 
 import delta_sharing
 dbutils.fs.cp('s3://hls-eng-data-public/delta_share/rearc_hls_data.share','/tmp/')
-share_file_path = "dbfs:/tmp/rearc_hls_data.share"
-client = delta_sharing.SharingClient(share_file_path)
+share_file_path = "/tmp/rearc_hls_data.share"
+client = delta_sharing.SharingClient(f"/dbfs{share_file_path}")
 shared_tables = client.list_all_tables()
 
 # COMMAND ----------
