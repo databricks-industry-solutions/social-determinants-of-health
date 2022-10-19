@@ -84,6 +84,41 @@ for ds, url in dataset_urls.items():
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC Let's take a look at the correlation between different health stats. To do so, we use `Correlation` function from `pyspark.ml.stat` package to calculate pairwise pearson correlation coefficients among features of interest (such as smoking, obesity etc). This approach enables us to leverage distributed processing to accelerate computation. 
+
+# COMMAND ----------
+
+from pyspark.ml.stat import Correlation
+from pyspark.ml.feature import VectorAssembler
+import pandas as pd
+import plotly.express as px
+
+# create the dataframe of selected features
+_df=sql('select SmokingPct, ObesityPct, HeartDiseasePct, CancerPct, NoHealthInsPct, AsthmaPct from silver_health_stats')
+# convert columns of the dataframe to vectors 
+vecAssembler = VectorAssembler(outputCol="features")
+vector_col = "corr_features"
+assembler = VectorAssembler(inputCols=_df.columns, outputCol=vector_col)
+df_vector = assembler.transform(_df).select(vector_col)
+
+# Calculate the correlation matrix
+corr_matrix = Correlation.corr(df_vector, vector_col).select('pearson(corr_features)').collect()[0]['pearson(corr_features)'].toArray()
+
+# COMMAND ----------
+
+# DBTITLE 1,Pairwise correlation among different health stats 
+col_names=_df.columns
+_pdf=pd.DataFrame(corr_matrix,columns=col_names,index=col_names)
+px.imshow(_pdf,text_auto=True)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC From the matrix above we see a very significant correlation between rate of smoking and other risk factors such as obesity, heart disease and asthma. Perhaps a more rigorous analysis would require taking into account estimation errors due to the sizes of counties.
+
+# COMMAND ----------
+
 # DBTITLE 1,vaccinations
 # MAGIC %sql
 # MAGIC select * from silver_vaccinations limit 20
