@@ -74,19 +74,19 @@ for ds, url in dataset_urls.items():
 
 # DBTITLE 1,Education Status
 # MAGIC %sql
-# MAGIC select * from silver_education limit 50
+# MAGIC select * from silver_education limit 20
 
 # COMMAND ----------
 
 # DBTITLE 1,Health Stats
 # MAGIC %sql
-# MAGIC select * from silver_health_stats limit 50
+# MAGIC select * from silver_health_stats limit 20
 
 # COMMAND ----------
 
 # DBTITLE 1,vaccinations
 # MAGIC %sql
-# MAGIC select * from silver_vaccinations limit 50
+# MAGIC select * from silver_vaccinations limit 20
 
 # COMMAND ----------
 
@@ -129,7 +129,7 @@ spark.read.csv('wasb://data@sdohworkshop.blob.core.windows.net/sdoh/Population_D
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC select * from population_density limit 50
+# MAGIC select * from population_density limit 20
 
 # COMMAND ----------
 
@@ -155,7 +155,7 @@ spark.read.csv('wasb://data@sdohworkshop.blob.core.windows.net/sdoh/Population_D
 
 # DBTITLE 1,View the dataset
 # MAGIC %sql
-# MAGIC select * from vaccine_data_pct limit 50
+# MAGIC select * from vaccine_data_pct limit 20
 
 # COMMAND ----------
 
@@ -235,7 +235,7 @@ dfShaps.createOrReplaceTempView("shap")
 
 # COMMAND ----------
 
-sql('select * from shap limit 50').display()
+sql('select * from shap limit 20').display()
 
 # COMMAND ----------
 
@@ -266,8 +266,10 @@ display(usa_model_county_vaccine_shap_df)
 
 # COMMAND ----------
 
+# DBTITLE 1,Top SDH effecting vaccination rates 
 mean_abs_shap = np.absolute(shap_values).mean(axis=0).tolist()
-display(spark.createDataFrame(sorted(list(zip(mean_abs_shap, X.columns)), reverse=True)[:6], ["Mean |SHAP|", "Column"]))
+_pdf=pd.DataFrame(sorted(list(zip(mean_abs_shap, X.columns)), reverse=True)[:6],columns=["Mean(SHAP)", "Column"])
+px.bar(_pdf,x='Column',y='Mean(SHAP)')
 
 # COMMAND ----------
 

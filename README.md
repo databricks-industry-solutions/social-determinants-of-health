@@ -37,6 +37,7 @@ Copyright / License info of the notebook. Copyright [2021] the Notebook Authors.
 |Numpy |BSD 3-Clause License| https://github.com/numpy/numpy/blob/main/LICENSE.txt | https://github.com/numpy/numpy|
 |Apache Spark |Apache License 2.0| https://github.com/apache/spark/blob/master/LICENSE | https://github.com/apache/spark/tree/master/python/pyspark|
 |SHAP| MIT | https://github.com/slundberg/shap/blob/master/LICENSE | https://github.com/slundberg/shap/|
+|Plotly Express | MIT License | https://github.com/plotly/plotly_express/blob/master/LICENSE.txt | https://github.com/plotly/plotly_express/|
 
 |Author|
 |-|
