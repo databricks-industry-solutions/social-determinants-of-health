@@ -74,19 +74,19 @@ for ds, url in dataset_urls.items():
 
 # DBTITLE 1,Education Status
 # MAGIC %sql
-# MAGIC select * from silver_education
+# MAGIC select * from silver_education limit 50
 
 # COMMAND ----------
 
 # DBTITLE 1,Health Stats
 # MAGIC %sql
-# MAGIC select * from silver_health_stats
+# MAGIC select * from silver_health_stats limit 50
 
 # COMMAND ----------
 
 # DBTITLE 1,vaccinations
 # MAGIC %sql
-# MAGIC select * from silver_vaccinations
+# MAGIC select * from silver_vaccinations limit 50
 
 # COMMAND ----------
 
@@ -129,7 +129,7 @@ spark.read.csv('wasb://data@sdohworkshop.blob.core.windows.net/sdoh/Population_D
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC select * from population_density
+# MAGIC select * from population_density limit 50
 
 # COMMAND ----------
 
@@ -155,7 +155,7 @@ spark.read.csv('wasb://data@sdohworkshop.blob.core.windows.net/sdoh/Population_D
 
 # DBTITLE 1,View the dataset
 # MAGIC %sql
-# MAGIC select * from vaccine_data_pct
+# MAGIC select * from vaccine_data_pct limit 50
 
 # COMMAND ----------
 
@@ -235,7 +235,7 @@ dfShaps.createOrReplaceTempView("shap")
 
 # COMMAND ----------
 
-sql('select * from shap').display()
+sql('select * from shap limit 50').display()
 
 # COMMAND ----------
 
@@ -256,7 +256,7 @@ select fips, stack(12,'Minority_Population_Pct',Minoirity_Population_Pct,'income
 )  
 as (factor, value)
 from shap
-""")
+""").limit(50)
 display(usa_model_county_vaccine_shap_df)
 
 # COMMAND ----------
