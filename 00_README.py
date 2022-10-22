@@ -1,4 +1,9 @@
 # Databricks notebook source
+# MAGIC %md 
+# MAGIC You may find this series of notebooks at https://github.com/databricks-industry-solutions/social-determinants-of-health.git.
+
+# COMMAND ----------
+
 # MAGIC %md
 # MAGIC <div style="text-align: center; line-height: 0; padding-top: 9px;">
 # MAGIC <img src=" https://hls-eng-data-public.s3.amazonaws.com/img/Databricks_HLS.png" width=700> 

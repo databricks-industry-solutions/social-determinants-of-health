@@ -1,4 +1,9 @@
 # Databricks notebook source
+# MAGIC %md 
+# MAGIC You may find this series of notebooks at https://github.com/databricks-industry-solutions/social-determinants-of-health.git.
+
+# COMMAND ----------
+
 # MAGIC %md
 # MAGIC ## Create a SDOH Database based on publically available data
 # MAGIC There are a number of datasets from various sources we used to explore their affects on vacination rates of COVID-19. 
