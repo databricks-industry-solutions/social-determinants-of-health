@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md 
-# MAGIC You may find this series of notebooks at https://github.com/databricks-industry-solutions/social-determinants-of-health.git.
+# MAGIC You may find this series of notebooks at https://github.com/databricks-industry-solutions/social-determinants-of-health.git. For more information about this accelerator, visit https://www.databricks.com/solutions/accelerators/social-determinants-of-health.
 
 # COMMAND ----------
 
@@ -159,7 +159,7 @@ fig.show()
 
 # MAGIC %md
 # MAGIC ### Create training data
-# MAGIC Here, we also need population densicty data. In this case, we directly read the `csv` files and register the resulting dataset as a view.
+# MAGIC Here, we also need population density data. In this case, we directly read the `csv` files and register the resulting dataset as a view.
 
 # COMMAND ----------
 

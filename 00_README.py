@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md 
-# MAGIC You may find this series of notebooks at https://github.com/databricks-industry-solutions/social-determinants-of-health.git.
+# MAGIC You may find this series of notebooks at https://github.com/databricks-industry-solutions/social-determinants-of-health.git. For more information about this accelerator, visit https://www.databricks.com/solutions/accelerators/social-determinants-of-health.
 
 # COMMAND ----------
 
@@ -25,7 +25,7 @@
 # MAGIC 
 # MAGIC Correlation between SDH and health outcomes is very clear: the lower the socioeconomic position, the worse the health, which in turn creates a negative feedback loop (poor health resulting in poor socioeconomic status) which results in widening the gap even more. 
 # MAGIC 
-# MAGIC There are many public sources of SDH data with different levels of granularity (country level, state/province, county, or zipcode/postal code level) that can be used in analysis of the impact of SDH on health outcomes. One of the main challenegs for data analysis is finding the right data source and data cleaning. 
+# MAGIC There are many public sources of SDH data with different levels of granularity (country level, state/province, county, or zipcode/postal code level) that can be used in analysis of the impact of SDH on health outcomes. One of the main challenges for data analysis is finding the right data source and data cleaning. 
 
 # COMMAND ----------
 
