@@ -20,9 +20,10 @@ Correlation between SDH and health outcomes is very clear: the lower the socioec
 There are many public sources of SDH data with different levels of granularity (country level, state/province, county, or zipcode/postal code level) that can be used in analysis of the impact of SDH on health outcomes. One of the main challenegs for data analysis is finding the right data source and data cleaning. 
 
 ## Access SDH data via Delta Share
-In this solution accelerator, we use pre-processed and cleansed tables that have been made available by [Rearc](rearc.io) via [delta sharing protocol](https://www.databricks.com/blog/2021/05/26/introducing-delta-sharing-an-open-protocol-for-secure-data-sharing.html). We explore income, healthcare, education and other aspects affect counties vaccinations rates for COVID-19. 
 
-Delta sharing allows us to offload the "bronze to silver" data prep step to a data provider or internal data team, beginning our analysis with "silver" or "gold" data.
+**To read shared data that has been shared with you using the Databricks-to-Databricks protocol, you must be a user on a Databricks workspace that is enabled for Unity Catalog.**
+
+In this solution accelerator, we use pre-processed and cleansed tables that have been made available by [Rearc](rearc.io) via [delta sharing protocol](https://www.databricks.com/blog/2021/05/26/introducing-delta-sharing-an-open-protocol-for-secure-data-sharing.html). We explore income, healthcare, education and other aspects affect counties vaccinations rates for COVID-19. Delta sharing allows us to offload the "bronze to silver" data prep step to a data provider or internal data team, beginning our analysis with "silver" or "gold" data.
 Using these data, we train a machine learning model to predict vaccination rates based on different SDH features and then use [SHAP](https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html) to offer insights into different factors impacting vaccination rates.
 
 ![](https://databricks.com/wp-content/uploads/2022/03/delta-lake-medallion-architecture-2.jpeg)
