@@ -1,7 +1,8 @@
 # Databricks notebook source
 # MAGIC %md This notebook sets up the companion cluster(s) to run the solution accelerator. It also creates the Workflow to illustrate the order of execution. Happy exploring! 
 # MAGIC 🎉
-# MAGIC **To read shared data that has been shared with you using the Databricks-to-Databricks protocol, you must be a user on a Databricks workspace that is enabled for Unity Catalog**
+# MAGIC 
+# MAGIC 
 # MAGIC **Steps**
 # MAGIC 1. Simply attach this notebook to a cluster with DBR 11.0 and above, and hit Run-All for this notebook. A multi-step job and the clusters used in the job will be created for you and hyperlinks are printed on the last block of the notebook. 
 # MAGIC 
@@ -12,9 +13,11 @@
 # MAGIC     2b. **Run the notebooks interactively**: Attach the notebook with the cluster(s) created and execute as described in the `job_json['tasks']` below.
 # MAGIC 
 # MAGIC **Prerequisites** 
-# MAGIC 1. You need to have cluster creation permissions in this workspace.
+# MAGIC 1. **To read shared data that has been shared with you in this accelerator using the Databricks-to-Databricks protocol, you must be a user on a Databricks workspace that is enabled for Unity Catalog**
 # MAGIC 
-# MAGIC 2. In case the environment has cluster-policies that interfere with automated deployment, you may need to manually create the cluster in accordance with the workspace cluster policy. The `job_json` definition below still provides valuable information about the configuration these series of notebooks should run with. 
+# MAGIC 2. You need to have cluster creation permissions in this workspace.
+# MAGIC 
+# MAGIC 3. In case the environment has cluster-policies that interfere with automated deployment, you may need to manually create the cluster in accordance with the workspace cluster policy. The `job_json` definition below still provides valuable information about the configuration these series of notebooks should run with. 
 # MAGIC 
 # MAGIC **Notes**
 # MAGIC 1. The pipelines, workflows and clusters created in this script are not user-specific. Keep in mind that rerunning this script again after modification resets them for other users too.
