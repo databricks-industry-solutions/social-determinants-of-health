@@ -1,7 +1,7 @@
 # Databricks notebook source
 # MAGIC %md This notebook sets up the companion cluster(s) to run the solution accelerator. It also creates the Workflow to illustrate the order of execution. Happy exploring! 
 # MAGIC 🎉
-# MAGIC 
+# MAGIC **To read shared data that has been shared with you using the Databricks-to-Databricks protocol, you must be a user on a Databricks workspace that is enabled for Unity Catalog**
 # MAGIC **Steps**
 # MAGIC 1. Simply attach this notebook to a cluster with DBR 11.0 and above, and hit Run-All for this notebook. A multi-step job and the clusters used in the job will be created for you and hyperlinks are printed on the last block of the notebook. 
 # MAGIC 
